@@ -23,21 +23,21 @@
 ## 아키텍처
 ```
 Flutter App → Supabase Auth (카카오 로그인)
-           → Supabase Storage (문서 업로드, 분석 후 즉시 삭제)
-           → Supabase Edge Function → Claude API (OCR+분석+교차검증)
+           → Supabase Storage (문서 업로드, 확인 후 즉시 삭제)
+           → Supabase Edge Function → Claude API (OCR+항목확인+교차대조)
            → Supabase DB (결과 암호화 저장)
            → 카카오페이 송금/계좌이체 (Phase 0, PG 없이)
            → 카카오 알림톡 (알림)
 ```
 
 ## API 호출 구조
-- **1회차**: 문서 OCR + 개별 분석 (계약서/등기부/건축물대장)
-- **2회차**: 교차검증 + 종합 리포트 생성
+- **1회차**: 문서 OCR + 개별 항목 확인 (계약서/등기부/건축물대장)
+- **2회차**: 교차 대조 + 확인 결과 리포트 생성
 - 건당 비용: Haiku ~64원 / Sonnet ~193원
 
 ## AI 체크 핵심 항목
 1. **계약서**: 표준계약서 판별 (6개 중 4개+), 특약사항, 계약기간/보증금/갱신요구권
-2. **등기부등본**: 소유권(갑구), 근저당(을구), 깡통전세 위험도 (HUG 기준: 공시가격×140%×90%)
+2. **등기부등본**: 소유권(갑구), 근저당(을구), 압류/가압류/경매/처분금지/신탁(all or nothing 감점), 깡통전세 참고 수치 (HUG 기준)
 3. **건축물대장**: 용도, 위반건축물, 무허가, 면적
 4. **교차검증**: 소유자 3중 대조, 주소 3중 대조, 면적/용도
 5. **생성**: 체크 항목 충족률, 항목별 사실 요약, 참고 대화 예시, 추천 특약 예시, 체크리스트, PDF 리포트
@@ -52,15 +52,15 @@ lib/
 │   ├── theme.dart
 │   └── router.dart
 ├── models/
-│   ├── analysis_result.dart     # 분석 결과 모델
-│   └── user_profile.dart        # 사용자 프로필 + 분석권
+│   ├── analysis_result.dart     # 체크 결과 모델
+│   └── user_profile.dart        # 사용자 프로필 + 체크권
 ├── services/
 │   ├── ai_service.dart          # Claude API 호출 (Edge Function 경유)
 │   ├── auth_service.dart        # Supabase Auth (카카오 로그인)
 │   └── storage_service.dart     # 파일 업로드/삭제
 ├── providers/
 │   ├── auth_provider.dart       # 인증 상태
-│   └── analysis_provider.dart   # 분석 상태
+│   └── analysis_provider.dart   # 체크 상태
 ├── screens/
 │   ├── login_screen.dart        # 카카오 로그인
 │   ├── phone_verify_screen.dart # 전화번호 인증 + 얼리버드 매칭
@@ -78,7 +78,7 @@ lib/
 
 supabase/
 └── functions/
-    └── analyze/index.ts         # AI 분석 Edge Function (Claude API)
+    └── analyze/index.ts         # AI 체크 Edge Function (Claude API)
 ```
 
 ## 개발 규칙
@@ -155,13 +155,17 @@ supabase/
 
 ### AI 시스템 프롬프트에 반드시 포함할 지시
 ```
-당신은 전세/월세 계약서 서류 체크 포인트 정리 도우미입니다.
-당신의 역할은 서류의 항목을 확인하고, 공식 기준을 참고하여 정보를 정리하는 것입니다.
+당신은 전세/월세 계약 서류 항목을 자동으로 확인해주는 기술적 도구입니다.
+당신은 계약을 평가하거나 법적 분석을 하는 것이 아닙니다.
+서류의 항목을 기계적으로 대조·확인하고, 공식 기준을 참고하여 정보를 정리합니다.
 절대 법적 판단, 계약 체결/해지 권유, 법적 조언을 하지 마세요.
 "~하세요", "~하지 마세요" 같은 지시형 표현을 사용하지 마세요.
 "위험합니다", "불가합니다" 같은 단정형 표현을 사용하지 마세요.
 항상 "~일 수 있습니다", "~확인이 필요합니다", "~전문가 상담을 권장합니다"로 표현하세요.
 공식 기준(HUG, 주임법 등)을 인용할 때는 반드시 출처를 명시하세요.
+특약 문구 제안 시 "일반적으로 사용되는 예시"임을 밝히고, 전문가 상의를 안내하세요.
+점수는 "체크 항목 충족률"이며, 계약의 안전도 점수가 아닙니다.
+요약은 "확인한 항목 요약입니다"로 시작하고, 사실 나열만 합니다.
 ```
 
 ### 앱/웹 UI에 표시할 면책
@@ -190,7 +194,7 @@ supabase/
 - 앱 이름: 계약체크 (ContractCheck), 첫 서비스: 전세/월세 계약 체크
 
 ## 스킬 파일
-- `.claude/skills/analysis-prompt.md` — **AI 분석 프롬프트 (핵심)** — 1회차/2회차 시스템 프롬프트, 분석 항목, 점수 산정, JSON 출력 형식
+- `.claude/skills/analysis-prompt.md` — **AI 체크 프롬프트 (핵심)** — 1회차/2회차 시스템 프롬프트, 확인 항목, 배점표, JSON 출력 형식
 - `.claude/skills/flutter.md` — Flutter 개발 패턴 및 핵심 패키지
 - `.claude/skills/supabase.md` — Supabase Auth, DB, Storage 연동
 - `.claude/skills/claude-api.md` — Claude API 호출 방법 (Vision, 캐싱, Tool Use)
