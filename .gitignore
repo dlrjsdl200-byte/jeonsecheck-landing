@@ -1,0 +1,20 @@
+# Flutter
+build/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+*.iml
+.idea/
+.metadata
+android/.gradle/
+ios/Pods/
+*.lock
+
+# Env
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
