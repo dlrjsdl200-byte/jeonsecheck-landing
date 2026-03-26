@@ -287,7 +287,8 @@ function openSignup(){document.getElementById('signup-modal').style.display='fle
 function closeSignup(){document.getElementById('signup-modal').style.display='none'}
 var SHEET_URL='https://script.google.com/macros/s/AKfycbzH7EkR5yC70gmczp8elKQjSuon7u8ljJE-pTEfOGcJuVDalCC1W8j9ujuIdqUJCbqz/exec';
 function saveToSheet(name,phone,method){
-  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,method:method})});
+  var url=SHEET_URL+'?name='+encodeURIComponent(name)+'&phone='+encodeURIComponent(phone)+'&method='+encodeURIComponent(method);
+  var img=new Image();img.src=url;
 }
 function validateForm(){
   var name=document.getElementById('signup-name').value.trim();
