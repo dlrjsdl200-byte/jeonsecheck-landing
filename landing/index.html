@@ -285,22 +285,27 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.getElementById('counter').textContent=42+Math.floor(Math.random()*15);
 function openSignup(){document.getElementById('signup-modal').style.display='flex'}
 function closeSignup(){document.getElementById('signup-modal').style.display='none'}
-function payKakao(){
+var SHEET_URL='https://script.google.com/macros/s/AKfycbzH7EkR5yC70gmczp8elKQjSuon7u8ljJE-pTEfOGcJuVDalCC1W8j9ujuIdqUJCbqz/exec';
+function saveToSheet(name,phone,method){
+  fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,method:method})});
+}
+function validateForm(){
   var name=document.getElementById('signup-name').value.trim();
   var phone=document.getElementById('signup-phone').value.trim();
-  if(!name||!phone){alert('이름과 전화번호를 입력해주세요.');return}
-  if(!/^01[0-9]{8,9}$/.test(phone.replace(/-/g,''))){alert('전화번호를 정확히 입력해주세요.');return}
-  localStorage.setItem('eb_name',name);localStorage.setItem('eb_phone',phone);
+  if(!name||!phone){alert('이름과 전화번호를 입력해주세요.');return null}
+  if(!/^01[0-9]{8,9}$/.test(phone.replace(/-/g,''))){alert('전화번호를 정확히 입력해주세요.');return null}
+  return{name:name,phone:phone}
+}
+function payKakao(){
+  var d=validateForm();if(!d)return;
+  saveToSheet(d.name,d.phone,'카카오페이');
   window.open('https://qr.kakaopay.com/FEInVNxMq','_blank');
   document.getElementById('signup-step1').style.display='none';
   document.getElementById('signup-done').style.display='block';
 }
 function payBank(){
-  var name=document.getElementById('signup-name').value.trim();
-  var phone=document.getElementById('signup-phone').value.trim();
-  if(!name||!phone){alert('이름과 전화번호를 입력해주세요.');return}
-  if(!/^01[0-9]{8,9}$/.test(phone.replace(/-/g,''))){alert('전화번호를 정확히 입력해주세요.');return}
-  localStorage.setItem('eb_name',name);localStorage.setItem('eb_phone',phone);
+  var d=validateForm();if(!d)return;
+  saveToSheet(d.name,d.phone,'계좌이체');
   document.getElementById('signup-step1').style.display='none';
   document.getElementById('signup-bank').style.display='block';
 }
