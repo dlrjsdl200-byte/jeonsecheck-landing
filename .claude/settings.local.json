@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(flutter create:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(flutter run:*)",
+      "Bash(mkdir -p landing)",
+      "Bash(cp \"전세체크-랜딩페이지-v2.1.html\" landing/index.html)",
+      "Bash(gh auth:*)",
+      "Bash(gh repo:*)",
+      "mcp__vercel__deploy_to_vercel",
+      "Bash(cd:*)",
+      "Bash(python -c \":*)",
+      "Bash(curl:*)",
+      "mcp__supabase__list_organizations",
+      "mcp__supabase__get_cost",
+      "mcp__supabase__confirm_cost",
+      "mcp__supabase__create_project",
+      "mcp__supabase__get_project_url",
+      "mcp__supabase__get_publishable_keys",
+      "mcp__supabase__apply_migration",
+      "Bash(flutter pub:*)"
+    ]
+  }
+}
