@@ -223,56 +223,181 @@ function maskPersonalInfo(
   return JSON.parse(masked);
 }
 
+// 허용 도메인 목록 (배포 후 실제 도메인으로 교체)
+const ALLOWED_ORIGINS = [
+  "https://landing-alpha-neon.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173",
+];
+
+// 파일 크기 제한 (20MB)
+const MAX_FILE_SIZE = 20 * 1024 * 1024;
+
+// 허용 문서 타입
+const VALID_DOC_TYPES = ["contract", "registry", "building"];
+
+function getCorsHeaders(req: Request): Record<string, string> {
+  const origin = req.headers.get("origin") ?? "";
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type",
+  };
+}
+
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   try {
     // CORS
     if (req.method === "OPTIONS") {
-      return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers":
-            "authorization, x-client-info, apikey, content-type",
-        },
-      });
+      return new Response(null, { headers: corsHeaders });
     }
 
-    // Auth 확인
+    // 1. JWT 토큰 검증 — 실제 사용자 확인
     const authHeader = req.headers.get("authorization");
-    if (!authHeader) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return new Response(JSON.stringify({ error: "인증이 필요합니다." }), {
         status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
+    const token = authHeader.replace("Bearer ", "");
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+    if (authError || !user) {
+      return new Response(JSON.stringify({ error: "유효하지 않은 인증 정보입니다." }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // 2. 분석권 서버 검증 — 클라이언트 우회 방지
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles")
+      .select("free_analyses_remaining")
+      .eq("id", user.id)
+      .single();
+
+    if (profileError || !profile || profile.free_analyses_remaining <= 0) {
+      return new Response(JSON.stringify({ error: "분석권이 부족합니다." }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // 3. 분석권 차감 (서버에서 직접)
+    await supabase
+      .from("profiles")
+      .update({
+        free_analyses_remaining: profile.free_analyses_remaining - 1,
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", user.id);
 
     const { paths, doc_types } = await req.json();
 
     if (!paths || !doc_types || paths.length === 0) {
       return new Response(
-        JSON.stringify({ error: "No documents provided" }),
-        { status: 400 }
+        JSON.stringify({ error: "서류가 제공되지 않았습니다." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // 1. 업로드된 파일들을 base64로 변환
+    // 4. 입력값 검증 — 프롬프트 인젝션 방어
+    if (!Array.isArray(paths) || !Array.isArray(doc_types)) {
+      return new Response(
+        JSON.stringify({ error: "잘못된 요청 형식입니다." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (paths.length > 3 || doc_types.length > 3 || paths.length !== doc_types.length) {
+      return new Response(
+        JSON.stringify({ error: "서류는 최대 3개까지 업로드 가능합니다." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    for (const dt of doc_types) {
+      if (!VALID_DOC_TYPES.includes(dt)) {
+        return new Response(
+          JSON.stringify({ error: "허용되지 않는 서류 유형입니다." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // 5. 경로 검증 — 본인 파일만 접근 가능
+    for (const p of paths) {
+      if (typeof p !== "string" || !p.startsWith(user.id + "/")) {
+        return new Response(
+          JSON.stringify({ error: "접근 권한이 없는 파일입니다." }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // 6. 업로드된 파일들을 base64로 변환 (타입/크기 검증 포함)
     const userContent: Array<Record<string, unknown>> = [];
+
+    const DOC_LABELS: Record<string, string> = {
+      contract: "계약서",
+      registry: "등기부등본",
+      building: "건축물대장",
+    };
 
     for (let i = 0; i < paths.length; i++) {
       const { data: fileData, error: fileError } = await supabase.storage
         .from("documents")
         .download(paths[i]);
 
-      if (fileError) throw new Error(`File download error: ${fileError.message}`);
+      if (fileError) {
+        console.error("File download error:", fileError.message);
+        return new Response(
+          JSON.stringify({ error: "서류 파일을 불러올 수 없습니다." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
 
       const buffer = await fileData.arrayBuffer();
+
+      // 파일 크기 검증
+      if (buffer.byteLength > MAX_FILE_SIZE) {
+        return new Response(
+          JSON.stringify({ error: "파일 크기가 20MB를 초과합니다." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // 파일 타입 검증 (magic bytes)
+      const header = new Uint8Array(buffer.slice(0, 4));
+      const isPdf =
+        header[0] === 0x25 && header[1] === 0x50 && header[2] === 0x44 && header[3] === 0x46; // %PDF
+      const isJpeg = header[0] === 0xff && header[1] === 0xd8;
+      const isPng =
+        header[0] === 0x89 && header[1] === 0x50 && header[2] === 0x4e && header[3] === 0x47; // .PNG
+
+      if (!isPdf && !isJpeg && !isPng) {
+        return new Response(
+          JSON.stringify({ error: "허용되지 않는 파일 형식입니다. PDF, JPEG, PNG만 가능합니다." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
       const base64 = btoa(
         String.fromCharCode(...new Uint8Array(buffer))
       );
 
-      const isPdf = paths[i].toLowerCase().endsWith(".pdf");
-      const mediaType = isPdf ? "application/pdf" : "image/jpeg";
+      const mediaType = isPdf
+        ? "application/pdf"
+        : isPng
+        ? "image/png"
+        : "image/jpeg";
 
       if (isPdf) {
         userContent.push({
@@ -286,16 +411,9 @@ Deno.serve(async (req) => {
         });
       }
 
-      const docLabel =
-        doc_types[i] === "contract"
-          ? "계약서"
-          : doc_types[i] === "registry"
-          ? "등기부등본"
-          : "건축물대장";
-
       userContent.push({
         type: "text",
-        text: `위 이미지는 ${docLabel}입니다.`,
+        text: `위 이미지는 ${DOC_LABELS[doc_types[i]]}입니다.`,
       });
     }
 
@@ -325,24 +443,18 @@ Deno.serve(async (req) => {
     const maskedResult = maskPersonalInfo(pass2Result);
 
     return new Response(JSON.stringify(maskedResult), {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Analysis error:", error);
+    // 서버 로그에만 상세 에러 기록, 클라이언트에는 일반 메시지만 반환
+    console.error("Analysis error:", error instanceof Error ? error.message : error);
     return new Response(
       JSON.stringify({
-        error: "서류 확인 중 오류가 발생했습니다.",
-        detail: error.message,
+        error: "서류 확인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.",
       }),
       {
         status: 500,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   }

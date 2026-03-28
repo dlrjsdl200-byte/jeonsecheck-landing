@@ -104,19 +104,22 @@ class _UploadScreenState extends State<UploadScreen> {
       _registryBytes != null ||
       _buildingBytes != null;
 
+  // 파일 크기 제한 (20MB)
+  static const _maxFileSize = 20 * 1024 * 1024;
+
   Future<void> _startAnalysis() async {
-    final auth = context.read<AuthProvider>();
     final analysis = context.read<AnalysisProvider>();
 
-    // 분석권 차감
-    final credited = await auth.useCredit();
-    if (!credited) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('분석권이 부족합니다')),
-        );
+    // 클라이언트 파일 크기 검증
+    for (final bytes in [_contractBytes, _registryBytes, _buildingBytes]) {
+      if (bytes != null && bytes.length > _maxFileSize) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('파일 크기가 20MB를 초과합니다.')),
+          );
+        }
+        return;
       }
-      return;
     }
 
     if (mounted) {
@@ -136,7 +139,7 @@ class _UploadScreenState extends State<UploadScreen> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('분석 중 오류가 발생했습니다: $e')),
+          const SnackBar(content: Text('분석 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.')),
         );
         context.go('/');
       }

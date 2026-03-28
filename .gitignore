@@ -15,6 +15,14 @@ ios/Pods/
 .env
 .env.*
 
+# 내부 문서 (PRD 등)
+*.docx
+*.pdf
+
+# Vercel
+.vercel/
+landing/.vercel/
+
 # OS
 .DS_Store
 Thumbs.db
