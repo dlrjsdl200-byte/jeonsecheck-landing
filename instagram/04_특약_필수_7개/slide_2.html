@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #F5F5F0;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 64px 72px 0;
+    flex-shrink: 0;
+  }
+  .page-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1B4DFF;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 40px;
+    font-weight: 900;
+    color: #1A1A1A;
+  }
+
+  .cards {
+    flex: 1;
+    padding: 40px 72px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 44px 44px;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .card-num {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #1B4DFF;
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: 1;
+  }
+  .card-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .check {
+    color: #1B4DFF;
+    font-size: 28px;
+  }
+  .card-desc {
+    font-size: 26px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.55;
+  }
+  .card-desc em {
+    font-style: normal;
+    color: #1A1A1A;
+    font-weight: 600;
+  }
+
+  /* 하단 */
+  .footer {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+  }
+  .dot.active {
+    background: #1B4DFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+  .brand {
+    color: rgba(0,0,0,0.3);
+    font-size: 18px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="page-label">PART 1</div>
+    <div class="page-title">반드시 넣어야 할 특약 3가지</div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">1</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 권리관계 유지</div>
+        <div class="card-desc">"계약 후 <em>새로운 근저당/압류</em><br>안 잡겠다"는 약속이에요.<br>이게 없으면 보증금이 위험해질 수 있어요.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-num">2</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 보증금 반환 시기/방법</div>
+        <div class="card-desc"><em>언제, 어떻게</em> 돌려줄지<br>구체적으로 적어야 나중에 분쟁을 줄여요.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-num">3</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 보증보험 가입 협조</div>
+        <div class="card-desc">"<em>전세보증보험 가입</em>에<br>협조하겠다"는 내용. 거부하면 의심해보세요.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="brand">@contractcheck.kr</div>
+  </div>
+</body>
+</html>

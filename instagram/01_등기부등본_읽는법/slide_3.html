@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'Noto Sans KR',sans-serif;background:#0A0E27;color:#fff;overflow:hidden;position:relative}
+.wrap{padding:80px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.label{font-size:24px;font-weight:700;color:#FF6B6B;margin-bottom:12px}
+h2{font-size:52px;font-weight:900;line-height:1.3;letter-spacing:-1px;margin-bottom:40px}
+h2 em{font-style:normal;color:#FF6B6B}
+.alert-list{display:flex;flex-direction:column;gap:20px}
+.alert-item{background:rgba(255,107,107,.08);border:1px solid rgba(255,107,107,.2);border-radius:16px;padding:32px 36px;display:flex;align-items:flex-start;gap:20px}
+.alert-icon{font-size:32px;flex-shrink:0;margin-top:4px}
+.alert-item h4{font-size:30px;font-weight:700;margin-bottom:6px;color:#FF9B9B}
+.alert-item p{font-size:24px;color:rgba(255,255,255,.5);line-height:1.5}
+.bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.dots{display:flex;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.15)}
+.dot.active{background:#1B4DFF;width:32px;border-radius:6px}
+.brand{font-size:22px;font-weight:700;color:rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div>
+<div class="label">⚠ 갑구에서 확인</div>
+<h2>이 단어 보이면<br><em>무조건 주의</em>하세요</h2>
+<div class="alert-list">
+<div class="alert-item">
+<div class="alert-icon">🚨</div>
+<div><h4>압류 / 가압류</h4><p>집주인이 빚 문제로 법원에 묶인 상태예요.<br>보증금 못 돌려받을 수 있어요.</p></div>
+</div>
+<div class="alert-item">
+<div class="alert-icon">⛔</div>
+<div><h4>경매 개시결정</h4><p>이미 경매 절차가 시작된 집이에요.<br>계약하면 안 됩니다.</p></div>
+</div>
+<div class="alert-item">
+<div class="alert-icon">🔒</div>
+<div><h4>신탁등기</h4><p>신탁회사가 관리 중인 집이에요.<br>집주인이 마음대로 계약 못 해요.</p></div>
+</div>
+</div>
+</div>
+<div class="bottom">
+<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</div>
+</body>
+</html>

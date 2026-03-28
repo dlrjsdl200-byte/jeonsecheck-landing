@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'IBM Plex Sans KR',sans-serif;background:#FFFDF5;color:#2D2A1E;overflow:hidden;position:relative}
+.paper-texture{position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,0,0,.03) 39px,rgba(0,0,0,.03) 40px);pointer-events:none}
+.red-line{position:absolute;left:100px;top:0;bottom:0;width:2px;background:#E8302C;opacity:.2}
+.wrap{padding:64px 72px 64px 130px;height:100%;display:flex;flex-direction:column}
+.header{margin-bottom:16px;flex-shrink:0}
+.header .num{font-size:20px;font-weight:700;color:#E8302C;margin-bottom:4px}
+.header h2{font-size:36px;font-weight:700;letter-spacing:-.5px}
+.qa-list{flex:1;display:flex;flex-direction:column;gap:24px;justify-content:center;padding-bottom:60px}
+.qa{position:relative}
+.q-bubble{background:#2D2A1E;color:#FFFDF5;border-radius:20px 20px 20px 4px;padding:32px 36px;font-size:30px;font-weight:600;line-height:1.5;margin-bottom:14px}
+.q-bubble .tag{display:inline-block;background:#E8302C;color:#fff;font-size:16px;font-weight:700;padding:4px 10px;border-radius:4px;margin-right:8px;vertical-align:middle}
+.a-bubble{background:#fff;border:1.5px solid #E8E5DA;border-radius:4px 20px 20px 20px;padding:28px 32px;font-size:25px;color:#8B8474;line-height:1.6;margin-left:40px}
+.a-bubble strong{color:#2D2A1E;font-weight:600}
+.bottom{position:absolute;bottom:48px;left:130px;right:72px;display:flex;justify-content:space-between;align-items:flex-end}
+.dots{display:flex;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(45,42,30,.12)}
+.dot.active{background:#E8302C;width:28px;border-radius:5px}
+.brand{font-size:20px;font-weight:600;color:rgba(45,42,30,.25)}
+</style>
+</head>
+<body>
+<div class="paper-texture"></div>
+<div class="red-line"></div>
+<div class="wrap">
+<div class="header">
+<div class="num">질문 1~2</div>
+<h2>이거 먼저 물어보세요</h2>
+</div>
+<div class="qa-list">
+<div class="qa">
+<div class="q-bubble"><span class="tag">Q1</span>"등기부등본에 근저당 있나요?"</div>
+<div class="a-bubble"><strong>왜?</strong> 근저당 금액이 크면 깡통전세일 수 있어요.<br>"없다"고 해도 직접 등기부를 확인하세요.<br>인터넷등기소에서 1,000원이면 발급돼요.</div>
+</div>
+<div class="qa">
+<div class="q-bubble"><span class="tag">Q2</span>"전세보증보험 가입 가능한가요?"</div>
+<div class="a-bubble"><strong>왜?</strong> 가입 안 되는 집이면 보증금 보호가 어려워요.<br>중개사가 말을 돌리면 주의하세요.<br>HUG 기준 집값 대비 비율이 핵심이에요.</div>
+</div>
+</div>
+</div>
+<div class="bottom">
+<div class="dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</body>
+</html>

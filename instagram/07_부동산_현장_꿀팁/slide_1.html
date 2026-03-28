@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'IBM Plex Sans KR',sans-serif;background:#FFFDF5;color:#2D2A1E;overflow:hidden;position:relative}
+.paper-texture{position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(0,0,0,.03) 39px,rgba(0,0,0,.03) 40px);pointer-events:none}
+.red-line{position:absolute;left:100px;top:0;bottom:0;width:2px;background:#E8302C;opacity:.2}
+.wrap{padding:100px 80px 80px 130px;height:100%;display:flex;flex-direction:column;justify-content:center;position:relative}
+.sticker{position:absolute;top:60px;right:60px;background:#FEF3C7;color:#92400E;font-size:22px;font-weight:700;padding:14px 22px;border-radius:4px;transform:rotate(3deg);box-shadow:2px 2px 8px rgba(0,0,0,.08)}
+h1{font-size:60px;font-weight:700;line-height:1.4;letter-spacing:-1px}
+h1 .hl{background:linear-gradient(180deg,transparent 55%,#FDE68A 55%);display:inline;padding:0 4px}
+.sub{font-size:28px;color:#8B8474;font-weight:400;margin-top:24px;line-height:1.6}
+.count{display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:12px 24px;background:#2D2A1E;color:#FFFDF5;border-radius:50px;font-size:24px;font-weight:600}
+.bottom{position:absolute;bottom:56px;left:130px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.swipe{font-size:22px;color:rgba(45,42,30,.3)}
+.brand{font-size:20px;font-weight:600;color:rgba(45,42,30,.25)}
+.dots{display:flex;gap:10px;margin-top:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(45,42,30,.12)}
+.dot.active{background:#E8302C;width:28px;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="paper-texture"></div>
+<div class="red-line"></div>
+<div class="sticker">📝 메모 필수</div>
+<div class="wrap">
+<h1>부동산에서<br><span class="hl">꼭 물어봐야 할</span><br>질문 5가지</h1>
+<p class="sub">중개사가 안 알려주는 건 직접 물어봐야 해요.<br>이 질문만 해도 분위기가 달라집니다.</p>
+<div class="count">✋ 5가지 질문</div>
+</div>
+<div class="bottom">
+<div>
+<div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="swipe">밀어서 계속 →</div>
+</div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</body>
+</html>

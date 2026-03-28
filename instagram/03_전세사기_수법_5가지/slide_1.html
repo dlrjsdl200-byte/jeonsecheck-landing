@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'Noto Sans KR',sans-serif;background:#0A0E27;color:#fff;overflow:hidden;position:relative}
+.grain{position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="256" height="256" filter="url(%23n)" opacity="0.04"/></svg>');opacity:.5;pointer-events:none;z-index:10}
+.wrap{padding:80px;height:100%;display:flex;flex-direction:column;justify-content:center;position:relative}
+.tag{display:inline-block;background:#FF3B3B;color:#fff;font-size:28px;font-weight:700;padding:10px 24px;border-radius:8px;letter-spacing:1px}
+h1{font-size:66px;font-weight:900;line-height:1.3;letter-spacing:-2px;margin-top:40px}
+h1 em{font-style:normal;color:#FF3B3B}
+.sub{font-size:30px;color:rgba(255,255,255,.45);font-weight:400;margin-top:24px;line-height:1.5}
+.bottom{position:absolute;bottom:60px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.swipe{font-size:24px;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:8px}
+.brand{font-size:22px;font-weight:700;color:rgba(255,255,255,.3)}
+.dots{display:flex;gap:10px;margin-top:20px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.2)}
+.dot.active{background:#FF3B3B;width:32px;border-radius:6px}
+.icon-area{position:absolute;bottom:200px;right:80px;width:180px;height:180px;display:flex;align-items:center;justify-content:center;font-size:100px;opacity:.9}
+.glow{position:absolute;bottom:200px;right:60px;width:300px;height:300px;background:radial-gradient(circle,rgba(255,59,59,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="glow"></div>
+<div class="icon-area">🚨</div>
+<div class="wrap">
+<div>
+<span class="tag">전세사기 주의</span>
+<h1>이 5가지 중<br>하나라도 해당되면,<br><em>전세사기</em>일 수 있어요</h1>
+<p class="sub">모르면 당하는 전세사기 수법 총정리</p>
+</div>
+<div class="bottom">
+<div>
+<div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+</div>
+<div>
+<div class="swipe">밀어서 계속 보기 →</div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</div>
+</div>
+</body>
+</html>

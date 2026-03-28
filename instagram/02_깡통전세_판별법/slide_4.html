@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'Noto Sans KR',sans-serif;background:#1B4DFF;color:#fff;overflow:hidden;position:relative}
+.grain{position:absolute;top:0;left:0;right:0;bottom:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="256" height="256" filter="url(%23n)" opacity="0.04"/></svg>');opacity:.4;pointer-events:none;z-index:10}
+.wrap{padding:80px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.icon{font-size:80px;margin-bottom:32px}
+h2{font-size:56px;font-weight:900;line-height:1.35;letter-spacing:-1px;margin-bottom:20px}
+.sub{font-size:30px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:48px}
+.price-box{background:rgba(255,255,255,.15);border-radius:20px;padding:32px 64px;margin-bottom:16px;backdrop-filter:blur(4px)}
+.price-old{font-size:26px;color:rgba(255,255,255,.5);text-decoration:line-through;margin-bottom:4px}
+.price-new{font-size:52px;font-weight:900;letter-spacing:-1px}
+.price-label{font-size:22px;color:rgba(255,255,255,.6);margin-top:4px}
+.badge{display:inline-block;background:#fff;color:#1B4DFF;font-size:24px;font-weight:900;padding:10px 28px;border-radius:50px;margin-bottom:48px}
+.cta{font-size:26px;color:rgba(255,255,255,.5);margin-top:24px}
+.bottom{position:absolute;bottom:80px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.dots{display:flex;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.3)}
+.dot.active{background:#fff;width:32px;border-radius:6px}
+.brand{font-size:22px;font-weight:700;color:rgba(255,255,255,.5)}
+.deco-circle{position:absolute;width:400px;height:400px;border:2px solid rgba(255,255,255,.08);border-radius:50%;top:-80px;right:-80px;pointer-events:none}
+.deco-circle2{position:absolute;width:300px;height:300px;border:2px solid rgba(255,255,255,.06);border-radius:50%;bottom:-60px;left:-60px;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="deco-circle"></div>
+<div class="deco-circle2"></div>
+<div class="wrap">
+<div class="icon">📋</div>
+<h2>계약서 사진만 찍으면<br>30초 만에 체크 끝</h2>
+<p class="sub">계약서 + 등기부등본 + 건축물대장<br>3개 서류 교차 확인까지 한번에</p>
+<div class="price-box">
+<div class="price-old">14,900원</div>
+<div class="price-new">9,900원</div>
+<div class="price-label">얼리버드 특별가</div>
+</div>
+<div class="badge">지금 바로 확인하기</div>
+<p class="cta">저장해두고 계약 전에 꺼내보세요</p>
+</div>
+<div class="bottom">
+<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</body>
+</html>

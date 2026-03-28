@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>전세계약 체크리스트 - 서류 확인</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #F5F5F0;
+    color: #1A1A2E;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 60px 72px 0;
+  }
+
+  .page-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B4DFF;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1A1A2E;
+    margin-bottom: 8px;
+  }
+
+  .page-sub {
+    font-size: 20px;
+    color: #888;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: calc(100% - 144px);
+    height: 2px;
+    background: #E0E0DA;
+    margin: 28px 72px 0;
+  }
+
+  .checklist {
+    padding: 32px 72px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 28px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1.5px solid #EAEAE5;
+    transition: all 0.2s;
+  }
+
+  .checkbox {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 2.5px solid #C8C8C0;
+    border-radius: 8px;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-text {
+    flex: 1;
+  }
+
+  .check-main {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A2E;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .check-why {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8A8A80;
+    line-height: 1.4;
+  }
+
+  .check-why .accent {
+    color: #1B4DFF;
+    font-weight: 500;
+  }
+
+  /* 하단 */
+  .bottom-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+  }
+
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+  }
+  .dot.active {
+    background: #1B4DFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+
+  .brand {
+    font-size: 18px;
+    color: rgba(0,0,0,0.3);
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="page-label">PART 1</div>
+  <div class="page-title">서류 확인 체크리스트</div>
+  <div class="page-sub">계약 전 반드시 확인할 5가지</div>
+</div>
+<div class="divider"></div>
+
+<div class="checklist">
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">등기부등본 발급일이 오늘인가?</div>
+      <div class="check-why"><span class="accent">당일 발급 필수</span> &mdash; 하루 사이에도 근저당이 추가될 수 있어요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">계약서 임대인 = 등기부 소유자 일치?</div>
+      <div class="check-why">이름이 다르면 <span class="accent">대리계약이나 사기</span>일 수 있어요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">근저당 합계 확인했나?</div>
+      <div class="check-why">근저당 + 보증금이 집값 초과하면 <span class="accent">보증금 못 돌려받을 수</span> 있어요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">압류/가압류/경매/신탁 없는지?</div>
+      <div class="check-why">하나라도 있으면 <span class="accent">보증금 회수가 어려워</span>질 수 있어요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">건축물대장 용도가 "주택"인가?</div>
+      <div class="check-why">주택이 아니면 <span class="accent">전입신고 보호</span>를 못 받을 수 있어요</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="brand">@contractcheck.kr</div>
+</div>
+
+</body>
+</html>

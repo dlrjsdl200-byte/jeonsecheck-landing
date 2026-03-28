@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #F5F5F0;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 64px 72px 0;
+  }
+  .page-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1B4DFF;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #1A1A1A;
+  }
+
+  .cards {
+    flex: 1;
+    padding: 48px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    justify-content: center;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 44px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .card-num {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: #1B4DFF;
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: 1;
+  }
+  .card-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .check {
+    color: #1B4DFF;
+    font-size: 24px;
+  }
+  .card-desc {
+    font-size: 22px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.55;
+  }
+  .card-desc em {
+    font-style: normal;
+    color: #1A1A1A;
+    font-weight: 600;
+  }
+
+  .tip-box {
+    margin: 0 72px;
+    background: rgba(27,77,255,0.06);
+    border-left: 4px solid #1B4DFF;
+    border-radius: 0 12px 12px 0;
+    padding: 24px 32px;
+  }
+  .tip-box p {
+    font-size: 21px;
+    color: #555;
+    line-height: 1.5;
+  }
+  .tip-box strong {
+    color: #1B4DFF;
+  }
+
+  /* 하단 */
+  .footer {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+  }
+  .dot.active {
+    background: #1B4DFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+  .brand {
+    color: rgba(0,0,0,0.3);
+    font-size: 18px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="page-label">PART 3</div>
+    <div class="page-title">퇴거할 때 싸우지 않으려면</div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">6</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 수리비 책임</div>
+        <div class="card-desc"><em>도배, 장판, 보일러</em> 등<br>누가 부담하는지 미리 정해두기</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-num">7</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 원상복구 범위</div>
+        <div class="card-desc">퇴거 시 <em>어디까지 원래대로</em><br>해야 하는지 구체적으로 명시</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>TIP</strong>&nbsp;&nbsp;이거 안 적어두면 나갈 때 "도배비 내라"<br>"보일러 고장 네 탓이다" 이런 분쟁이 생겨요.</p>
+  </div>
+
+  <div class="footer">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="brand">@contractcheck.kr</div>
+  </div>
+</body>
+</html>

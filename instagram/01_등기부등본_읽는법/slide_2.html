@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'Noto Sans KR',sans-serif;background:#F5F5F0;color:#111;overflow:hidden;position:relative}
+.wrap{padding:80px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.label{font-size:24px;font-weight:700;color:#1B4DFF;margin-bottom:12px}
+h2{font-size:56px;font-weight:900;line-height:1.3;letter-spacing:-1px;margin-bottom:48px}
+.box{background:#fff;border-radius:20px;padding:44px;border-left:6px solid #1B4DFF;box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.box h3{font-size:36px;font-weight:900;color:#1B4DFF;margin-bottom:16px}
+.box p{font-size:28px;color:#555;line-height:1.65}
+.box p strong{color:#111;font-weight:700}
+.divider{height:2px;background:#E5E5E0;margin:32px 0}
+.box2{background:#fff;border-radius:20px;padding:44px;border-left:6px solid #0AA06E;box-shadow:0 2px 20px rgba(0,0,0,.04)}
+.box2 h3{font-size:36px;font-weight:900;color:#0AA06E;margin-bottom:16px}
+.box2 p{font-size:28px;color:#555;line-height:1.65}
+.box2 p strong{color:#111;font-weight:700}
+.bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.dots{display:flex;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(0,0,0,.12)}
+.dot.active{background:#1B4DFF;width:32px;border-radius:6px}
+.brand{font-size:22px;font-weight:700;color:rgba(0,0,0,.2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div>
+<div class="label">등기부등본 구조</div>
+<h2>딱 두 부분만 보면 돼요</h2>
+<div class="box">
+<h3>갑구 — 이 집 주인이 누구?</h3>
+<p><strong>소유권</strong>에 관한 기록이에요.<br>현재 주인, 압류, 가처분 같은<br>소유권에 영향 주는 것들이 여기 있어요.</p>
+</div>
+<div style="height:24px"></div>
+<div class="box2">
+<h3>을구 — 빚이 얼마나 있어?</h3>
+<p><strong>소유권 외의 권리</strong> 기록이에요.<br>근저당(대출 담보), 전세권 같은<br>돈과 관련된 권리가 여기 적혀요.</p>
+</div>
+</div>
+<div class="bottom">
+<div class="dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</div>
+</body>
+</html>

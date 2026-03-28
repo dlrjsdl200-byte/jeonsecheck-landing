@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1080px;font-family:'IBM Plex Sans KR',sans-serif;background:#2D2A1E;color:#FFFDF5;overflow:hidden;position:relative}
+.wrap{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px}
+h2{font-size:50px;font-weight:700;line-height:1.4;letter-spacing:-1px;margin-bottom:16px}
+h2 .hl{color:#FDE68A}
+.sub{font-size:26px;color:rgba(255,253,245,.45);margin-bottom:48px;line-height:1.6}
+.cta-box{background:#FFFDF5;color:#2D2A1E;border-radius:24px;padding:40px 56px;display:inline-block}
+.cta-box h3{font-size:32px;font-weight:700;color:#E8302C;margin-bottom:4px}
+.cta-box p{font-size:22px;color:#8B8474;margin-bottom:14px}
+.cta-box .price{font-size:42px;font-weight:700;color:#2D2A1E}
+.cta-box .price span{font-size:22px;color:#aaa;font-weight:400}
+.questions{margin-top:44px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px}
+.q-tag{background:rgba(255,253,245,.08);border:1px solid rgba(255,253,245,.12);padding:10px 18px;border-radius:50px;font-size:20px;color:rgba(255,253,245,.5)}
+.save{margin-top:32px;font-size:22px;color:rgba(255,253,245,.35)}
+.bottom{position:absolute;bottom:48px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.dots{display:flex;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(255,253,245,.15)}
+.dot.active{background:#FDE68A;width:28px;border-radius:5px}
+.brand{font-size:20px;font-weight:600;color:rgba(255,253,245,.25)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h2>질문 5개,<br><span class="hl">스크린샷</span> 찍어가세요</h2>
+<p class="sub">부동산에서 당당하게 물어보세요.</p>
+<div class="cta-box">
+<h3>계약체크</h3>
+<p>서류 사진 찍으면 자동으로 확인</p>
+<div class="price">9,900원 <span>/ 1회</span></div>
+</div>
+<div class="questions">
+<div class="q-tag">근저당 확인</div>
+<div class="q-tag">보증보험 가입</div>
+<div class="q-tag">소유자 일치</div>
+<div class="q-tag">건축물 용도</div>
+<div class="q-tag">특약 확인</div>
+</div>
+<p class="save">저장 📌 해두고 현장에서 꺼내보세요</p>
+</div>
+<div class="bottom">
+<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot active"></div></div>
+<div class="brand">@contractcheck.kr</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>전세계약 체크리스트 - 계약 후 조치</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #F5F5F0;
+    color: #1A1A2E;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 60px 72px 0;
+  }
+
+  .page-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B4DFF;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1A1A2E;
+    margin-bottom: 8px;
+  }
+
+  .page-sub {
+    font-size: 20px;
+    color: #888;
+    font-weight: 400;
+  }
+
+  .divider {
+    width: calc(100% - 144px);
+    height: 2px;
+    background: #E0E0DA;
+    margin: 28px 72px 0;
+  }
+
+  .checklist {
+    padding: 32px 72px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    border: 1.5px solid #EAEAE5;
+  }
+
+  .checkbox {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 2.5px solid #C8C8C0;
+    border-radius: 8px;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check-text {
+    flex: 1;
+  }
+
+  .check-main {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A2E;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .check-why {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8A8A80;
+    line-height: 1.4;
+  }
+
+  .check-why .accent {
+    color: #1B4DFF;
+    font-weight: 500;
+  }
+
+  /* 하단 */
+  .bottom-bar {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 10;
+  }
+
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+  }
+  .dot.active {
+    background: #1B4DFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+
+  .brand {
+    font-size: 18px;
+    color: rgba(0,0,0,0.3);
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="page-label">PART 2</div>
+  <div class="page-title">계약 전후 조치 체크리스트</div>
+  <div class="page-sub">놓치면 보호받기 어려운 5가지</div>
+</div>
+<div class="divider"></div>
+
+<div class="checklist">
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">전입신고 + 확정일자 받을 계획?</div>
+      <div class="check-why">이사 당일 바로 해야 <span class="accent">대항력</span>이 생겨요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">보증보험 가입 가능한 수준인가?</div>
+      <div class="check-why"><span class="accent">HUG 기준</span>으로 가입 가능 여부를 미리 확인해 두세요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">특약사항에 필수 항목 포함?</div>
+      <div class="check-why">원상복구, 보증금 반환 시기 등 <span class="accent">나중에 분쟁</span>이 될 수 있는 부분이에요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">중개사 등록번호 확인?</div>
+      <div class="check-why"><span class="accent">무등록 중개</span>면 사고 시 배상받기 어려워요</div>
+    </div>
+  </div>
+
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-text">
+      <div class="check-main">잔금 전 등기부 한 번 더 확인?</div>
+      <div class="check-why">잔금일 직전에 <span class="accent">근저당이 추가</span>되는 경우도 있어요</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot active"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="brand">@contractcheck.kr</div>
+</div>
+
+</body>
+</html>

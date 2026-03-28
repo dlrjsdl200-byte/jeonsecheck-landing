@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #0A0E27;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 배경 장식 */
+  .bg-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(27,77,255,0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
+  .bg-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(27,77,255,0.2) 50%, transparent 100%);
+  }
+  .bg-line.top { top: 180px; }
+  .bg-line.bottom { bottom: 180px; }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 80px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(27,77,255,0.15);
+    border: 1px solid rgba(27,77,255,0.4);
+    color: #7BA3FF;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 10px 28px;
+    border-radius: 40px;
+    margin-bottom: 48px;
+    letter-spacing: 1px;
+  }
+
+  .title {
+    color: #FFFFFF;
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 36px;
+    word-break: keep-all;
+  }
+  .title em {
+    font-style: normal;
+    color: #5B8AFF;
+  }
+
+  .sub {
+    color: rgba(255,255,255,0.5);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    border: 2px solid rgba(27,77,255,0.4);
+    color: #5B8AFF;
+    font-size: 38px;
+    font-weight: 900;
+    margin-bottom: 40px;
+  }
+
+  /* 하단 */
+  .footer {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .dot.active {
+    background: #FFFFFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+  .brand {
+    color: rgba(255,255,255,0.35);
+    font-size: 18px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+  <div class="bg-line top"></div>
+  <div class="bg-line bottom"></div>
+
+  <div class="content">
+    <div class="badge">전세 특약 체크리스트</div>
+    <div class="number-badge">7</div>
+    <h1 class="title">계약서에<br><em>이 7개</em> 없으면,<br>나중에 후회해요</h1>
+    <p class="sub">전세 특약 필수 체크리스트</p>
+  </div>
+
+  <div class="footer">
+    <div class="dots">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="brand">@contractcheck.kr</div>
+  </div>
+</body>
+</html>

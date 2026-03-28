@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #F5F5F0;
+    font-family: 'Noto Sans KR', sans-serif;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header {
+    padding: 64px 72px 0;
+  }
+  .page-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1B4DFF;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .page-title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #1A1A1A;
+  }
+
+  .cards {
+    flex: 1;
+    padding: 48px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    justify-content: center;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 44px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  .card-num {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: #1B4DFF;
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-body {
+    flex: 1;
+  }
+  .card-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A1A1A;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .check {
+    color: #1B4DFF;
+    font-size: 24px;
+  }
+  .card-desc {
+    font-size: 22px;
+    font-weight: 400;
+    color: #666;
+    line-height: 1.55;
+  }
+  .card-desc em {
+    font-style: normal;
+    color: #1A1A1A;
+    font-weight: 600;
+  }
+
+  .tip-box {
+    margin: 0 72px;
+    background: rgba(27,77,255,0.06);
+    border-left: 4px solid #1B4DFF;
+    border-radius: 0 12px 12px 0;
+    padding: 24px 32px;
+  }
+  .tip-box p {
+    font-size: 21px;
+    color: #555;
+    line-height: 1.5;
+  }
+  .tip-box strong {
+    color: #1B4DFF;
+  }
+
+  /* 하단 */
+  .footer {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.15);
+  }
+  .dot.active {
+    background: #1B4DFF;
+    width: 28px;
+    border-radius: 5px;
+  }
+  .brand {
+    color: rgba(0,0,0,0.3);
+    font-size: 18px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="page-label">PART 2</div>
+    <div class="page-title">나를 지켜주는 특약 2가지</div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-num">4</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 새 권리변동 시 해지</div>
+        <div class="card-desc">계약 후 <em>새 근저당이 생기면</em><br>계약 해지할 수 있다는 내용</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-num">5</div>
+      <div class="card-body">
+        <div class="card-title"><span class="check">&#10003;</span> 대출 불가 시 무효</div>
+        <div class="card-desc"><em>전세대출이 안 나오면</em><br>계약을 무효로 할 수 있다는 내용</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>TIP</strong>&nbsp;&nbsp;이 두 개는 "탈출구" 역할이에요.<br>상황이 바뀌었을 때 빠져나올 수 있게 해줍니다.</p>
+  </div>
+
+  <div class="footer">
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="brand">@contractcheck.kr</div>
+  </div>
+</body>
+</html>
