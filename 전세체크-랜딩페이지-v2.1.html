@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>계약체크 — 도장 찍기 전 30초, 전세 사고 예방</title>
+<meta name="description" content="전세 계약서·등기부등본·건축물대장 사진만 찍으면, 30초 만에 꼭 확인해야 할 항목을 정리해드립니다.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#1B4DFF;--primary-dark:#0F3AD8;--primary-light:#EBF0FF;--danger:#E8302C;--danger-light:#FFF0F0;--safe:#0AA06E;--safe-light:#ECFDF5;--amber:#D97706;--amber-light:#FFFBEB;--dark:#111827;--text:#1F2937;--muted:#6B7280;--bg:#FAFAFA;--white:#FFFFFF;--border:#E5E7EB;--shadow:0 1px 3px rgba(0,0,0,.06);--shadow-lg:0 12px 40px rgba(0,0,0,.1);--radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.75;-webkit-font-smoothing:antialiased}.container{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}nav.scrolled{box-shadow:var(--shadow)}.nav-inner{max-width:1040px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}.logo{font-weight:800;font-size:18px;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none}.logo-shield{width:28px;height:28px;background:var(--primary);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:900}.nav-cta{background:var(--primary);color:#fff;border:none;padding:9px 22px;border-radius:50px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none}.nav-cta:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.hero{padding:130px 0 60px;text-align:center;position:relative}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(27,77,255,.04) 0%,transparent 60%);pointer-events:none}.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--danger-light);color:var(--danger);padding:7px 16px;border-radius:50px;font-size:13px;font-weight:700;margin-bottom:24px;animation:fadeUp .6s ease both}.hero h1{font-size:clamp(28px,5vw,50px);font-weight:900;line-height:1.3;color:var(--dark);margin-bottom:16px;letter-spacing:-1px;animation:fadeUp .6s .1s ease both}.hero h1 .blue{color:var(--primary)}.hero h1 .red{color:var(--danger)}.hero-sub{font-size:clamp(15px,1.8vw,19px);color:var(--muted);max-width:520px;margin:0 auto 32px;animation:fadeUp .6s .2s ease both}.hero-price{font-size:clamp(20px,3vw,28px);font-weight:700;color:var(--dark);margin-bottom:8px;animation:fadeUp .6s .25s ease both;background:var(--primary-light);display:inline-block;padding:10px 28px;border-radius:50px;border:2px solid var(--primary)}.hero-price .hl{color:var(--primary);font-weight:900;font-size:1.2em}.hero-price .s{font-size:.75em;font-weight:400;color:var(--muted)}.hero-price-after{font-size:14px;color:var(--muted);margin-bottom:28px;animation:fadeUp .6s .28s ease both}.hero-cta-wrap{animation:fadeUp .6s .3s ease both}.btn-big{background:var(--primary);color:#fff;padding:16px 40px;border-radius:50px;font-size:17px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all .25s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(27,77,255,.25)}.btn-big:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,77,255,.35)}.hero-trust{margin-top:20px;font-size:13px;color:var(--muted);animation:fadeUp .6s .4s ease both}
+.stats-section{padding:50px 0 60px;background:var(--dark);color:#fff}.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px}.stat-item{text-align:center;padding:24px 16px}.stat-item .num{font-family:'Outfit',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:900;line-height:1;margin-bottom:6px}.stat-item .num.red{color:#FF6B6B}.stat-item .num.blue{color:#60A5FA}.stat-item .num.amber{color:#FBBF24}.stat-item .label{font-size:14px;color:rgba(255,255,255,.5)}.stats-headlines{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:8px}.headline{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;font-size:13px;color:rgba(255,255,255,.6);transition:background .2s;flex-wrap:wrap}.headline:hover{background:rgba(255,255,255,.08)}.headline .src{color:rgba(255,255,255,.3);font-size:12px;margin-left:auto;white-space:nowrap}
+.upload-section{padding:60px 0}.upload-card{max-width:700px;margin:0 auto;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow-lg);overflow:hidden}.upload-header{background:#F9FAFB;padding:14px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted);font-weight:500}.upload-body{padding:28px}.upload-steps{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap}.upload-step{flex:1;min-width:140px;background:var(--primary-light);border:1.5px dashed rgba(27,77,255,.25);border-radius:12px;padding:20px 14px;text-align:center;transition:all .3s}.upload-step:hover{border-color:var(--primary);background:#E0E8FF}.upload-step .icon{font-size:28px;margin-bottom:8px;display:block}.upload-step .label{font-size:13px;font-weight:600;color:var(--primary)}.upload-step .sub{font-size:11px;color:var(--muted);margin-top:4px}.result-preview{background:#F9FAFB;border-radius:12px;padding:20px}.result-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}.result-item:last-child{border:none}.ri-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}.ri-danger{background:var(--danger-light);color:var(--danger)}.ri-warn{background:var(--amber-light);color:var(--amber)}.ri-safe{background:var(--safe-light);color:var(--safe)}.ri-text h4{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:2px}.ri-text p{font-size:13px;color:var(--muted);line-height:1.5}
+.section-label{font-size:13px;font-weight:700;color:var(--primary);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;text-align:center}.section-title{font-size:clamp(24px,3.2vw,36px);font-weight:800;text-align:center;color:var(--dark);margin-bottom:14px;letter-spacing:-.5px}.section-sub{font-size:16px;color:var(--muted);text-align:center;max-width:520px;margin:0 auto 40px}
+.how-section{padding:64px 0 56px;background:var(--white);border-top:1px solid var(--border)}.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:40px}.step-card{text-align:center;padding:32px 20px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);transition:all .3s;position:relative}.step-card:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(27,77,255,.08);transform:translateY(-3px)}.step-num{width:48px;height:48px;background:var(--primary-light);color:var(--primary);border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin-bottom:16px}.step-card h3{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:8px}.step-card p{font-size:14px;color:var(--muted)}.step-arrow{display:none;position:absolute;right:-16px;top:50%;font-size:20px;color:var(--primary);z-index:1}@media(min-width:800px){.step-arrow{display:block}}
+.check-section{padding:72px 0 60px;background:var(--dark);color:#fff}.check-section .section-label{color:#60A5FA}.check-section .section-title{color:#fff}.check-section .section-sub{color:rgba(255,255,255,.5)}.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.check-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px;transition:all .3s}.check-card:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}.check-card .doc-name{font-size:13px;font-weight:700;color:#60A5FA;margin-bottom:10px;display:flex;align-items:center;gap:6px}.check-card ul{list-style:none}.check-card li{font-size:14px;color:rgba(255,255,255,.7);padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}.check-card li::before{content:'\2713';color:#34D399;font-weight:700;flex-shrink:0}
+.risk-section{padding:56px 0 48px}.risk-bar{max-width:600px;margin:0 auto 12px;display:flex;border-radius:12px;overflow:hidden;height:48px;font-size:13px;font-weight:700;text-align:center;color:#fff}.risk-bar div{display:flex;align-items:center;justify-content:center;padding:0 4px}.risk-safe{background:#0AA06E;flex:7}.risk-warn{background:#D97706;flex:1}.risk-danger{background:#E8302C;flex:1}.risk-extreme{background:#7C1D1D;flex:1}.risk-labels{max-width:600px;margin:0 auto;display:flex;font-size:12px;color:var(--muted)}.risk-labels span{text-align:center}.risk-labels span:nth-child(1){flex:7}.risk-labels span:nth-child(2){flex:1}.risk-labels span:nth-child(3){flex:1}.risk-labels span:nth-child(4){flex:1;color:var(--danger);font-weight:600}
+.pricing-section{padding:68px 0 56px}.pricing-cards{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:40px}.price-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;width:300px;position:relative;transition:all .3s}.price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}.price-card.featured{border:2px solid var(--primary);box-shadow:0 8px 32px rgba(27,77,255,.1)}.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--danger);color:#fff;padding:5px 18px;border-radius:50px;font-size:12px;font-weight:700;white-space:nowrap}.price-card h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:4px}.price-card .desc{font-size:13px;color:var(--muted);margin-bottom:16px}.price-main{font-size:40px;font-weight:900;color:var(--dark);line-height:1}.price-main .won{font-size:16px;font-weight:600}.price-main .per{font-size:14px;font-weight:400;color:var(--muted)}.price-after{font-size:13px;color:var(--muted);margin:8px 0 16px;text-decoration:line-through}.price-features{list-style:none;text-align:left;margin-bottom:20px}.price-features li{padding:6px 0;font-size:13px;color:var(--text);display:flex;align-items:center;gap:8px;border-bottom:1px solid #F3F4F6}.price-features li:last-child{border:none}.price-features .ck{color:var(--primary);font-weight:700}.price-btn{width:100%;padding:14px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;border:none;transition:all .2s}.price-btn-primary{background:var(--primary);color:#fff}.price-btn-primary:hover{background:var(--primary-dark)}.price-btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}.price-btn-outline:hover{background:var(--primary-light)}
+.counter-bar{display:inline-flex;align-items:center;gap:8px;background:var(--safe-light);border:1px solid #A7F3D0;border-radius:50px;padding:10px 20px;font-size:14px;font-weight:600;color:#065F46;margin-top:24px}
+.about-section{padding:52px 0 44px;background:var(--white);border-top:1px solid var(--border)}.about-inner{display:flex;align-items:center;gap:40px;flex-wrap:wrap;max-width:680px;margin:0 auto}.about-avatar{width:88px;height:88px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0}.about-text{flex:1;min-width:260px}.about-text h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:4px}.about-text .role{font-size:13px;color:var(--primary);font-weight:600;margin-bottom:12px}.about-text p{font-size:14px;color:var(--muted);line-height:1.7}
+.faq-section{padding:56px 0 48px}.faq-list{max-width:640px;margin:40px auto 0}.faq-item{border-bottom:1px solid var(--border);padding:20px 0;cursor:pointer}.faq-q{font-size:15px;font-weight:600;color:var(--dark);display:flex;justify-content:space-between;align-items:center}.faq-q .arrow{transition:transform .3s;font-size:18px;color:var(--muted)}.faq-item.open .arrow{transform:rotate(180deg)}.faq-a{max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;font-size:14px;color:var(--muted);line-height:1.7}.faq-item.open .faq-a{max-height:300px;padding-top:12px}
+.final-cta{padding:64px 0 56px;background:linear-gradient(135deg,var(--dark),#1E293B);text-align:center;color:#fff;position:relative;overflow:hidden}.final-cta::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(27,77,255,.06),transparent 50%)}.final-cta h2{font-size:clamp(24px,3.5vw,38px);font-weight:900;margin-bottom:12px;position:relative;letter-spacing:-.5px}.final-cta p{font-size:17px;color:rgba(255,255,255,.5);margin-bottom:32px;position:relative}.final-cta .btn-big{position:relative}.final-small{margin-top:16px;font-size:13px;color:rgba(255,255,255,.35);position:relative}
+footer{padding:32px 0;text-align:center;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
+.flow-section{padding:60px 0 52px;background:var(--white);border-top:1px solid var(--border)}.flow-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-top:40px;flex-wrap:wrap}.flow-step{text-align:center;padding:24px 20px;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);width:200px;position:relative;transition:all .3s}.flow-step:hover{border-color:var(--primary);box-shadow:0 4px 16px rgba(27,77,255,.08);transform:translateY(-3px)}.flow-num{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}.flow-icon{font-size:32px;margin-bottom:12px;margin-top:8px}.flow-step h3{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:6px}.flow-step p{font-size:13px;color:var(--muted);line-height:1.5}.flow-arrow{font-size:24px;color:var(--primary);font-weight:700;display:flex;align-items:center;padding:0 8px;margin-top:40px}@media(max-width:640px){.flow-steps{flex-direction:column;align-items:center;gap:12px}.flow-arrow{transform:rotate(90deg);margin-top:0;padding:4px 0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}.reveal{opacity:0;transform:translateY(24px);transition:all .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:640px){.hero{padding:110px 0 50px}.hero-price{font-size:18px;padding:8px 20px}.upload-steps{flex-direction:column}.about-inner{flex-direction:column;text-align:center}.pricing-cards{flex-direction:column;align-items:center}.btn-big{width:100%;max-width:320px;justify-content:center}.risk-bar{font-size:11px;height:40px}.stats-grid{grid-template-columns:repeat(2,1fr);gap:8px}.stat-item{padding:16px 8px}.stat-item .num{font-size:24px}.check-grid{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr}.section-title{font-size:22px}.section-sub{font-size:14px}.price-card{width:100%;max-width:340px}.nav-cta{padding:7px 14px;font-size:13px}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="nav-inner"><a href="#" class="logo"><img src="icon.png" alt="계약체크" style="width:28px;height:28px;border-radius:7px">계약체크</a><a href="javascript:openSignup()" class="nav-cta">얼리버드 신청하기</a></div></nav>
+
+<section class="hero"><div class="container">
+<div class="hero-badge">누적 피해자 28,000명+, 피해액 2조 4,963억원</div>
+<h1>도장 찍기 전 <span class="blue">30초</span>,<br>전세 사고 <span class="red">예방</span></h1>
+<p class="hero-sub">계약서·등기부등본·건축물대장 사진만 찍으면<br>꼭 확인해야 할 항목을 쉬운 말로 정리해줘요.</p>
+<div class="hero-price">얼리버드 <span class="hl">9,900원</span> <span class="s">/ 1회 체크</span></div>
+<p class="hero-price-after">출시되면 19,900원이에요</p>
+<div class="hero-cta-wrap"><a href="#pricing" class="btn-big">얼리버드 신청하기 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+<p class="hero-trust">서류 확인은 AI가, 판단은 전문가와 함께.</p>
+</div></section>
+
+<div style="background:var(--primary-light);padding:10px 0;text-align:center;font-size:12px;color:var(--primary);font-weight:500">본 서비스는 법률 자문이나 계약 평가가 아닌, 서류 항목을 자동 확인해주는 <strong>기술적 도구</strong>입니다. 최종 판단은 전문가와 상의하세요.</div>
+
+<section class="stats-section"><div class="container">
+<div class="stats-grid reveal">
+<div class="stat-item"><div class="num red">28,000+</div><div class="label">누적 피해자 수</div></div>
+<div class="stat-item"><div class="num red">2.5조원</div><div class="label">누적 피해 금액</div></div>
+<div class="stat-item"><div class="num blue">75%</div><div class="label">20~30대 청년층</div></div>
+<div class="stat-item"><div class="num amber">47,353건</div><div class="label">2024 임차권등기명령</div></div>
+</div>
+<div class="stats-headlines reveal">
+<div class="headline">"올 상반기만 1,244건, 여전한 전세사기 피해" <span class="src">한국경제 2025.10</span></div>
+<div class="headline">"전세사기 피해자 2개월 새 3천명 늘어, 2030이 75%" <span class="src">The Economy 2025.03</span></div>
+<div class="headline">"최근 5년간 보증사고 7,460건, 피해 1조 591억원" <span class="src">한국경제 2025.10</span></div>
+</div></div></section>
+
+<section class="upload-section" id="demo"><div class="container"><div class="upload-card reveal">
+<div class="upload-header"><span style="font-size:16px">🛡</span> 계약체크 — AI 자동 확인 미리보기</div>
+<div class="upload-body">
+<div class="upload-steps">
+<div class="upload-step"><span class="icon">📄</span><div class="label">계약서</div><div class="sub">사진 촬영</div></div>
+<div class="upload-step"><span class="icon">🏛</span><div class="label">등기부등본</div><div class="sub">사진 또는 PDF</div></div>
+<div class="upload-step"><span class="icon">🏗</span><div class="label">건축물대장</div><div class="sub">사진 또는 PDF</div></div>
+</div>
+<div class="result-preview">
+<div style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px">자동 확인 결과 예시</div>
+<div style="font-size:11px;color:var(--muted);margin-bottom:12px">※ 서류 항목 자동 확인 결과이며, 법률 자문이나 계약 평가가 아닙니다.</div>
+<div class="result-item"><div class="ri-icon ri-danger">!</div><div class="ri-text"><h4>깡통전세 참고 수치 — HUG 기준 90% 초과 구간</h4><p>근저당 2.4억 + 보증금 1.5억 = 추정 시세 대비 92%. HUG 기준 참고 시 보증보험 가입이 어려울 수 있는 구간입니다. (출처: HUG 전세보증금반환보증 가입 기준)</p></div></div>
+<div class="result-item"><div class="ri-icon ri-danger">!</div><div class="ri-text"><h4>건축물대장 용도 "근린생활시설" 확인</h4><p>건축물대장상 용도가 주택이 아닌 '근린생활시설'로 되어 있습니다. 주택임대차보호법 적용 여부는 전문가에게 확인해볼 수 있습니다.</p></div></div>
+<div class="result-item"><div class="ri-icon ri-warn">⚠</div><div class="ri-text"><h4>일반적 특약 3개 항목 미포함</h4><p>"권리관계 유지", "보증금 반환 시기", "보증보험 협조" 관련 특약이 계약서에 포함되어 있지 않습니다. 필요 시 전문가와 상의해볼 수 있습니다.</p></div></div>
+<div class="result-item"><div class="ri-icon ri-safe">✓</div><div class="ri-text"><h4>소유자·임대인·건축물대장 3중 일치 확인</h4><p>3개 서류의 소유자와 주소가 모두 일치합니다.</p></div></div>
+</div></div></div></div></section>
+
+<section class="how-section"><div class="container">
+<h2 class="section-title reveal">사진 찍고, 30초면 끝이에요</h2>
+<p class="section-sub reveal">부동산에서 계약서 받자마자 바로 확인해볼 수 있어요.</p>
+<div class="steps-grid">
+<div class="step-card reveal"><div class="step-num">1</div><h3>서류 사진 촬영</h3><p>계약서, 등기부등본, 건축물대장을<br>스마트폰으로 찍거나 PDF 업로드</p><span class="step-arrow">→</span></div>
+<div class="step-card reveal"><div class="step-num">2</div><h3>30초 자동 확인</h3><p>체크 포인트, 빠진 항목,<br>서류끼리 안 맞는 부분을 정리</p><span class="step-arrow">→</span></div>
+<div class="step-card reveal"><div class="step-num">3</div><h3>결과 + 대화 예시</h3><p>쉬운 말 해설, 중개사에게 물어볼<br>대화 예시, 넣으면 좋을 특약까지</p></div>
+</div></div></section>
+
+<section class="check-section"><div class="container">
+<h2 class="section-title reveal">3가지 서류에서 이걸 확인해요</h2>
+<p class="section-sub reveal">중개사가 "괜찮다"고 해도, 서류에서 직접 확인해야 할 것들이에요.</p>
+<div class="check-grid">
+<div class="check-card reveal"><div class="doc-name">📄 계약서</div><ul>
+<li>표준계약서 필수 항목 6개 포함 여부</li><li>보증금 반환 시기·방법 명시 여부</li><li>권리관계 유지 특약 유무</li><li>보증보험 가입 협조 특약 유무</li><li>근저당/체납 발견 시 해지 특약</li><li>대출 불가 시 무효 특약</li><li>수리비 책임, 갱신·해지 조건</li><li>빠진 특약이 있으면 넣을 수 있는 문구 예시</li></ul></div>
+<div class="check-card reveal"><div class="doc-name">🏛 등기부등본</div><ul>
+<li>소유자와 계약서 임대인 일치</li><li>근저당 설정 금액 합계 추출</li><li>깡통전세 참고 수치 (HUG 공식 기준)</li><li>압류·가압류·경매 개시결정</li><li>신탁등기 여부 (반드시 확인)</li><li>소유권 이전 이력 (잦은 거래 주의)</li><li>법인 소유 여부</li></ul></div>
+<div class="check-card reveal"><div class="doc-name">🏗 건축물대장 + 🔄 교차 검증</div><ul>
+<li>건물 용도가 "주택"인지 확인</li><li>위반건축물·무허가 여부</li><li>주소·면적 일치 여부</li><li>소유자 3중 대조 (3서류 비교)</li><li>주소 3중 대조 (동단위까지)</li><li>신탁+계약당사자 대조</li><li>깡통전세 종합 참고 수치 (HUG 기준)</li></ul></div>
+</div></div></section>
+
+<section class="risk-section"><div class="container">
+<h2 class="section-title reveal">깡통전세, 내 보증금은 괜찮을까?</h2>
+<p class="section-sub reveal">HUG 전세보증금반환보증 기준으로 (보증금 + 선순위채권) ÷ 주택가격 비율을 확인해요.</p>
+<div class="risk-bar reveal"><div class="risk-safe">~70% 양호</div><div class="risk-warn">~80%</div><div class="risk-danger">~90%</div><div class="risk-extreme">90%+</div></div>
+<div class="risk-labels reveal"><span>HUG 일반 보증요율</span><span>주의 권장</span><span>확인 필요</span><span>보증 가입 어려움</span></div>
+<p style="text-align:center;font-size:13px;color:var(--muted);margin-top:16px" class="reveal">출처: HUG 전세보증금반환보증 가입 기준 (2023.05~ 시행). 본 수치는 참고용이며, 실제 가입 여부는 HUG에 직접 확인하세요.</p>
+</div></section>
+
+<section class="flow-section"><div class="container">
+<h2 class="section-title reveal">신청하면 어떻게 되나요?</h2>
+<p class="section-sub reveal">간단해요. 이렇게 진행돼요.</p>
+<div class="flow-steps">
+<div class="flow-step reveal">
+<div class="flow-num">1</div>
+<div class="flow-icon">💳</div>
+<h3>얼리버드 결제</h3>
+<p>9,900원 결제 시<br>전화번호·이름 입력</p>
+</div>
+<div class="flow-arrow reveal">→</div>
+<div class="flow-step reveal">
+<div class="flow-num">2</div>
+<div class="flow-icon">✅</div>
+<h3>예약 완료 문자</h3>
+<p>결제 즉시<br>예약 확인 문자 발송</p>
+</div>
+<div class="flow-arrow reveal">→</div>
+<div class="flow-step reveal">
+<div class="flow-num">3</div>
+<div class="flow-icon">🔔</div>
+<h3>출시 알림</h3>
+<p>서비스 출시 시<br>카카오 알림톡으로 안내</p>
+</div>
+<div class="flow-arrow reveal">→</div>
+<div class="flow-step reveal">
+<div class="flow-num">4</div>
+<div class="flow-icon">🛡</div>
+<h3>체크권 사용</h3>
+<p>앱 다운 → 전화번호 인증<br>→ 1회 체크권 자동 적용</p>
+</div>
+</div>
+</div></section>
+
+<section class="pricing-section" id="pricing"><div class="container">
+<h2 class="section-title reveal">변호사 상담 한 번에 10~30만원,<br>여기선 9,900원이에요</h2>
+<p class="section-sub reveal">물론 법률 자문은 아니지만, 서류 항목 확인만으로도 놓치는 게 줄어들어요.</p>
+<div class="pricing-cards">
+<div class="price-card featured reveal">
+<div class="price-badge">얼리버드 — 선착순 100명</div>
+<h3>전세 안심 체크</h3><p class="desc">3서류 종합 체크 1회</p>
+<div class="price-main"><span class="won">₩</span>9,900 <span class="per">/ 1회</span></div>
+<p class="price-after">출시 후 정가 19,900원</p>
+<ul class="price-features">
+<li><span class="ck">✓</span> 계약서 체크 포인트 + 특약 7개 확인</li>
+<li><span class="ck">✓</span> 등기부등본 깡통전세 참고 수치 (HUG 기준)</li>
+<li><span class="ck">✓</span> 건축물대장 용도·합법 확인</li>
+<li><span class="ck">✓</span> 3서류 교차 검증 (소유자·주소·면적)</li>
+<li><span class="ck">✓</span> 쉬운 말 해설 + 참고 대화 예시</li>
+<li><span class="ck">✓</span> 빠진 특약 문구 예시 제공</li>
+<li><span class="ck">✓</span> PDF 리포트 다운로드</li>
+</ul>
+<button class="price-btn price-btn-primary" onclick="openSignup()">얼리버드 신청하기</button></div>
+<div class="price-card reveal">
+<h3>정가 (출시 후)</h3><p class="desc">동일한 3서류 종합 체크</p>
+<div class="price-main"><span class="won">₩</span>19,900 <span class="per">/ 1회</span></div>
+<p style="font-size:13px;color:var(--muted);margin:8px 0 16px">얼리버드 대비 10,000원 추가</p>
+<ul class="price-features"><li><span class="ck">✓</span> 얼리버드와 동일한 전체 기능</li><li><span class="ck">✓</span> 추가 체크 시에도 동일 가격</li></ul>
+<button class="price-btn price-btn-outline" onclick="openSignup()">지금은 얼리버드가 이득</button></div>
+</div>
+<div style="text-align:center"><div class="counter-bar reveal">🛡 현재 <strong id="counter">0</strong>명이 사전 신청 완료</div></div>
+</div></section>
+
+<section class="about-section"><div class="container"><div class="about-inner reveal">
+<div class="about-avatar">👋</div>
+<div class="about-text"><h3>안녕하세요, 만든 사람이에요</h3><p class="role">개발자</p>
+<p>작년에 전세 계약하면서, 등기부등본 떼놓고도 뭘 봐야 하는지 몰라서 한참 검색했어요. 근저당이 뭔지, 깡통전세 기준이 뭔지 — 그때 "이거 자동으로 정리해주는 게 있으면 좋겠다" 싶었거든요. 물론 법률 자문을 대체할 순 없지만, 최소한 서류에서 뭘 확인해야 하는지는 알려줄 수 있으니까요.</p></div></div></div></section>
+
+<section class="faq-section"><div class="container">
+<h2 class="section-title reveal">궁금한 점</h2>
+<div class="faq-list">
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">법률 자문을 대신하는 건가요? <span class="arrow">▾</span></div><div class="faq-a">아니에요. 서류에 있는 항목을 자동으로 정리해주는 도구예요. 계약이 좋다 나쁘다 판단하는 게 아니라, "이런 항목이 있다/없다"를 알려주는 거라서요. 중요한 건 꼭 변호사나 법무사와 상의하세요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">사진으로 찍어도 되나요? <span class="arrow">▾</span></div><div class="faq-a">네, 스마트폰 사진이면 충분해요. PDF도 되고요. 부동산에서 종이 서류 받으면 그 자리에서 바로 찍으면 돼요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">3가지 서류를 다 올려야 하나요? <span class="arrow">▾</span></div><div class="faq-a">계약서 하나만 올려도 확인돼요. 근데 등기부등본이랑 건축물대장까지 같이 올리면 서류끼리 교차 대조가 되니까 훨씬 꼼꼼해져요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">깡통전세 기준이 뭔가요? <span class="arrow">▾</span></div><div class="faq-a">HUG(주택도시보증공사) 전세보증금반환보증 가입 기준을 참고해요. (보증금 + 선순위채권) ÷ 주택가격이 90% 넘으면 보증보험 가입이 어려울 수 있는 수준이에요. 실제 가입 여부는 HUG에 직접 확인하시는 게 정확해요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">내 계약서 정보가 유출되진 않나요? <span class="arrow">▾</span></div><div class="faq-a">확인 끝나면 서류 원본은 바로 삭제돼요. 서버에 남는 건 체크 결과뿐이고, 그것도 암호화해서 저장해요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">결제하면 바로 쓸 수 있나요? <span class="arrow">▾</span></div><div class="faq-a">지금은 사전 신청이에요. 결제할 때 전화번호 남겨주시면, 앱 나올 때 카톡으로 알려드려요. 가입하고 전화번호 인증하면 체크권이 바로 들어가요.</div></div>
+<div class="faq-item reveal" onclick="this.classList.toggle('open')"><div class="faq-q">여러 개 살 수 있나요? <span class="arrow">▾</span></div><div class="faq-a">얼리버드는 1인 1회까지예요. 앱 나오면 추가 체크권 구매할 수 있어요.</div></div>
+</div></div></section>
+
+<section class="final-cta"><div class="container">
+<h2>도장 찍기 전에,<br>30초만 써보세요</h2>
+<p>얼리버드 9,900원 · 출시 후 19,900원</p>
+<a href="#pricing" class="btn-big">얼리버드 신청하기 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<p class="final-small">확인 완료 후 서류는 즉시 삭제 · 법률 자문이나 계약 평가가 아닌 기술적 도구</p>
+</div></section>
+
+<!-- FAB 버튼 -->
+<div id="fab" onclick="openSignup()" style="position:fixed;bottom:24px;right:24px;z-index:150;background:var(--primary);color:#fff;padding:14px 24px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(27,77,255,.35);display:flex;align-items:center;gap:8px;transition:all .25s;opacity:0;transform:translateY(20px);pointer-events:none" onmouseover="this.style.background='#0F3AD8';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--primary)';this.style.transform='translateY(0)'">
+<img src="icon.png" alt="" style="width:22px;height:22px;border-radius:5px">9,900원 신청
+</div>
+
+<!-- 결제 모달 -->
+<div id="signup-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:200;align-items:center;justify-content:center;padding:12px" onclick="if(event.target===this)closeSignup()">
+<div style="background:#fff;border-radius:20px;max-width:400px;width:100%;max-height:90vh;overflow-y:auto;position:relative">
+<button onclick="closeSignup()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#9CA3AF;line-height:1">&times;</button>
+
+<!-- Step 1: 이름/전화번호 입력 + 결제 선택 -->
+<div id="signup-step1" style="padding:24px">
+<h3 style="font-size:20px;font-weight:800;color:#111827;margin-bottom:4px">얼리버드 신청</h3>
+<p style="font-size:14px;color:#6B7280;margin-bottom:24px">출시 시 카카오 알림톡으로 안내드려요</p>
+
+<label style="font-size:13px;font-weight:600;color:#374151;display:block;margin-bottom:6px">이름</label>
+<input id="signup-name" type="text" placeholder="홍길동" style="width:100%;padding:12px 16px;border:1px solid #E5E7EB;border-radius:10px;font-size:15px;margin-bottom:16px;box-sizing:border-box;outline:none;transition:border .2s" onfocus="this.style.borderColor='#1B4DFF'" onblur="this.style.borderColor='#E5E7EB'">
+
+<label style="font-size:13px;font-weight:600;color:#374151;display:block;margin-bottom:6px">전화번호</label>
+<input id="signup-phone" type="tel" placeholder="01012345678" style="width:100%;padding:12px 16px;border:1px solid #E5E7EB;border-radius:10px;font-size:15px;margin-bottom:24px;box-sizing:border-box;outline:none;transition:border .2s" onfocus="this.style.borderColor='#1B4DFF'" onblur="this.style.borderColor='#E5E7EB'">
+
+<p style="font-size:13px;color:#6B7280;margin-bottom:16px;text-align:center">결제 방법을 선택해주세요</p>
+
+<button onclick="payKakao()" style="width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:#FEE500;color:#191919;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;white-space:nowrap">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="#191919" style="flex-shrink:0"><path d="M12 3C6.48 3 2 6.58 2 10.9c0 2.78 1.86 5.22 4.65 6.6-.15.54-.96 3.47-1 3.64 0 0-.02.09.03.13.06.04.12.02.12.02.16-.02 2.91-1.9 3.37-2.22.59.08 1.2.13 1.83.13 5.52 0 10-3.58 10-7.9S17.52 3 12 3z"/></svg>
+카카오페이 결제 9,900원
+</button>
+
+<button onclick="payBank()" style="width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:2px solid #E5E7EB;background:#fff;color:#374151;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s;white-space:nowrap">
+🏦 계좌이체 9,900원
+</button>
+
+<p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:16px">결제 완료 후 예약 확인 문자를 보내드립니다</p>
+</div>
+
+<!-- 계좌이체 안내 -->
+<div id="signup-bank" style="display:none;padding:24px;text-align:center">
+<div style="font-size:40px;margin-bottom:16px">🏦</div>
+<h3 style="font-size:20px;font-weight:800;color:#111827;margin-bottom:20px">계좌이체 안내</h3>
+
+<div style="background:#F9FAFB;border-radius:12px;padding:20px;margin-bottom:20px">
+<p style="font-size:13px;color:#6B7280;margin-bottom:8px">입금 계좌</p>
+<p style="font-size:20px;font-weight:800;color:#111827;margin-bottom:4px">카카오뱅크</p>
+<p style="font-size:24px;font-weight:800;color:#1B4DFF;letter-spacing:1px;margin-bottom:4px">3333-36-9528188</p>
+<p style="font-size:14px;color:#374151;margin-bottom:12px">예금주: 이건</p>
+<p style="font-size:18px;font-weight:700;color:#111827;margin-bottom:16px">금액: 9,900원</p>
+<button id="copy-btn" onclick="copyAccount()" style="padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:1px solid #1B4DFF;background:#EBF0FF;color:#1B4DFF;transition:all .2s">계좌번호 복사</button>
+</div>
+
+<div style="background:#FFF7ED;border-radius:10px;padding:14px;margin-bottom:20px;text-align:left">
+<p style="font-size:13px;color:#92400E;font-weight:600;margin-bottom:4px">입금자명 = 신청자 이름</p>
+<p style="font-size:12px;color:#B45309">입금자명이 다를 경우 확인이 어려울 수 있어요</p>
+</div>
+
+<button onclick="bankDone()" style="width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;background:#1B4DFF;color:#fff;transition:all .2s">입금 완료했어요</button>
+</div>
+
+<!-- 완료 -->
+<div id="signup-done" style="display:none;padding:24px;text-align:center">
+<div style="font-size:48px;margin-bottom:16px">🎉</div>
+<h3 style="font-size:20px;font-weight:800;color:#111827;margin-bottom:8px">얼리버드 신청 완료!</h3>
+<p style="font-size:14px;color:#6B7280;margin-bottom:24px;line-height:1.6">입금 확인 후 예약 완료 문자를 보내드려요.<br>서비스 출시 시 카카오 알림톡으로 안내드립니다.</p>
+<div style="background:#ECFDF5;border-radius:12px;padding:16px;margin-bottom:24px">
+<p style="font-size:14px;color:#065F46;font-weight:600">📱 전화번호 인증으로 체크권 자동 적용</p>
+<p style="font-size:13px;color:#047857;margin-top:4px">앱 출시 → 가입 → 전화번호 인증 → 1회 체크권 사용</p>
+</div>
+<button onclick="closeSignup()" style="width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;border:none;background:#111827;color:#fff">확인</button>
+</div>
+
+</div>
+</div>
+
+<footer><div class="container">
+<p>&copy; 2026 계약체크. All rights reserved. | <a href="#" style="color:inherit">이용약관</a> · <a href="#" style="color:inherit">개인정보처리방침</a></p>
+<p style="margin-top:6px;font-size:11px;color:#9CA3AF">본 서비스는 서류 항목을 자동 확인해주는 기술적 도구이며, 법률 자문이나 계약 평가를 제공하지 않습니다. 이 도구는 계약의 안전 여부를 판단하지 않습니다. 깡통전세 수치는 HUG 기준을 참고하며, 실제 가입 여부는 HUG에 직접 확인하세요. 중요한 사안은 전문가 상담을 권합니다.</p>
+</div></footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10);
+var fab=document.getElementById('fab');
+if(window.scrollY>500){fab.style.opacity='1';fab.style.transform='translateY(0)';fab.style.pointerEvents='auto'}
+else{fab.style.opacity='0';fab.style.transform='translateY(20px)';fab.style.pointerEvents='none'}
+});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.getElementById('counter').textContent='47';
+function openSignup(){document.getElementById('signup-modal').style.display='flex'}
+function closeSignup(){document.getElementById('signup-modal').style.display='none'}
+var SHEET_URL='https://script.google.com/macros/s/AKfycbzH7EkR5yC70gmczp8elKQjSuon7u8ljJE-pTEfOGcJuVDalCC1W8j9ujuIdqUJCbqz/exec';
+function saveToSheet(name,phone,method){
+  var url=SHEET_URL+'?name='+encodeURIComponent(name)+'&phone='+encodeURIComponent(phone)+'&method='+encodeURIComponent(method);
+  var img=new Image();img.src=url;
+}
+function validateForm(){
+  var name=document.getElementById('signup-name').value.trim();
+  var phone=document.getElementById('signup-phone').value.trim();
+  if(!name||!phone){alert('이름과 전화번호를 입력해주세요.');return null}
+  if(!/^01[0-9]{8,9}$/.test(phone.replace(/-/g,''))){alert('전화번호를 정확히 입력해주세요.');return null}
+  return{name:name,phone:phone}
+}
+function payKakao(){
+  var d=validateForm();if(!d)return;
+  saveToSheet(d.name,d.phone,'카카오페이');
+  window.open('https://qr.kakaopay.com/FEInVNxMq','_blank');
+  document.getElementById('signup-step1').style.display='none';
+  document.getElementById('signup-done').style.display='block';
+}
+function payBank(){
+  var d=validateForm();if(!d)return;
+  saveToSheet(d.name,d.phone,'계좌이체');
+  document.getElementById('signup-step1').style.display='none';
+  document.getElementById('signup-bank').style.display='block';
+}
+function bankDone(){
+  document.getElementById('signup-bank').style.display='none';
+  document.getElementById('signup-done').style.display='block';
+}
+function copyAccount(){
+  navigator.clipboard.writeText('3333369528188').then(function(){
+    document.getElementById('copy-btn').textContent='복사 완료!';
+    setTimeout(function(){document.getElementById('copy-btn').textContent='계좌번호 복사'},2000);
+  });
+}
+</script>
+</body>
+</html>
